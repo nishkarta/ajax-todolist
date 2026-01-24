@@ -1,0 +1,47 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(270px, 1fr));
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.board__col {
+  display: flex;
+  flex-direction: column;
+  background: #111a33;
+  border: 1px solid var(--color-text-light-primary);
+  padding: 12px;
+  min-height: 240px;
+}
+
+.board__title {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-light-primary);
+}
+
+.board__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.board__empty {
+  /* flex: 1; */
+  padding-block: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  font-size: 13px;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 10px
+}
+
+.todo.overdue {
+  border-color: rgba(255, 255, 255, 0.18);
+}

@@ -1,0 +1,25 @@
+.tabs__list {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.tabs__tab {
+  color: var(--color-text-light-primary);
+  padding: 8px 14px;
+  /* border-radius: 10px; */
+  border: none;
+  background: #0f1730;
+  outline: none;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+}
+
+.tabs__tab[aria-selected="true"] {
+  /* background: #263a7a; */
+    border-bottom-color: var(--color-text-light-primary);
+}
+
+.tabs__panel {
+  margin-top: 10px;
+}

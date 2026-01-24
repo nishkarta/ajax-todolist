@@ -1,0 +1,80 @@
+.todo {
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0f1730;
+  display: grid;
+  gap: 10px;
+}
+
+.todo__top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.todo .content {
+  flex: 1;
+  display: grid;
+  gap: 4px;
+}
+
+.todo .text {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.todo.done .text, .todo.done .meta {
+  opacity: 0.6;
+}
+.todo.done .text {
+  text-decoration: line-through;
+}
+
+.todo .meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.todo .due,
+.todo .priority {
+  font-size: 12px;
+}
+
+.todo .actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.todo__bottom {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.icon-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.status-btn {
+  padding: 4px 8px;
+  /* border-radius: 8px; */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--color-text-light-primary);
+}
+
+.status-btn.active {
+  background: #263a7a;
+}
+
+.status-btn:hover {
+  background: #263a7a;
+}

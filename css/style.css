@@ -1,0 +1,25 @@
+:root {
+  --color-header: #0A0E1F;
+  --color-background: #0F152E;
+
+  --color-text-light-primary: #E7E3FCDE;
+  --color-text-light-secondary: #E7E3FCAD;
+  --color-text-light-disabled: #E7E3FC61;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--color-background);
+  color: var(--color-text-light-primary);
+}
+
+main {
+  max-width: calc(1440px - 36px);
+  margin: 24px auto;
+  padding: 16px;
+}

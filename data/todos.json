@@ -1,0 +1,4 @@
+[
+  { "id": "t1", "text": "Learn AJAX (fetch)", "done": false, "createdAt": 1700000000000 },
+  { "id": "t2", "text": "Store todos in localStorage", "done": true, "createdAt": 1700000001000 }
+]
