@@ -27,7 +27,7 @@ export function TodoForm({ onSubmit }) {
   const help = el("small", { className: "help", text: "Optional. Leave empty if no due date." });
   dueWrap.append(dueLabel, due, help);
 
-  // Priority (radio group) — no fieldset/legend
+  // Priority (radio group) 
   const prioWrap = el("div", { className: "todo-form__field" });
   const prioLabel = el("label", { className: "todo-form__label", text: "Priority" });
 
@@ -38,7 +38,6 @@ export function TodoForm({ onSubmit }) {
     const input = el("input", { attrs: { type: "radio", name: "priority", value } });
     if (checked) input.checked = true;
 
-    // keep your span so styling stays consistent
     const span = el("span", { text: label });
 
     wrap.append(input, span);

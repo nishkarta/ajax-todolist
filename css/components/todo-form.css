@@ -2,10 +2,10 @@
   padding: 16px;
   background: #111a33;
   color: #e9ecf1;
-  border: 1px solid var(--color-text-light-primary);
+  border: 1px solid var(--color-text-light-secondary);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .todo-form__legend {
@@ -33,6 +33,7 @@
   color: #e9ecf1;
   outline: none;
   color-scheme: dark;
+  font-size: 14px;
 }
 
 .todo-form__field input:focus,
@@ -71,6 +72,21 @@
   gap: 10px;
 }
 
-.ghost {
+.todo-form__actions button {
+  color: var(--color-text-light-primary);
+  border: 1px solid var(--color-text-light-primary);
+  background: #263a7a;
+  border-radius: 4px;
+  padding: 4px 8px;
+  outline: none;
+  width: 85px;
+  cursor: pointer;
+}
+
+.todo-form__actions button:hover {
+  font-weight: 700;
+}
+
+.todo-form__actions .ghost {
   background: transparent;
 }

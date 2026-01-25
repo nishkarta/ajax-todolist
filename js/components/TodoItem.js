@@ -1,4 +1,5 @@
 import { el } from "../utils/dom.js";
+import { capitalizeFirstLetter } from "../utils/format.js";
 
 export function TodoItem(todo, { onToggleDone, onDelete, onEdit, onMove }) {
   const li = el("li", { className: `todo${todo.status === "done" ? " done" : ""}` });
@@ -9,12 +10,12 @@ export function TodoItem(todo, { onToggleDone, onDelete, onEdit, onMove }) {
   const top = el("div", { className: "todo__top" });
 
   const content = el("div", { className: "content" });
-  const desc = el("span", { className: "text", text: descText });
+  const desc = el("span", { className: "text", text: capitalizeFirstLetter(descText) });
   desc.title = descText;
 
   const meta = el("div", { className: "meta" });
   if (todo.dueDate) meta.appendChild(el("span", { className: "due", text: `Due: ${todo.dueDate}` }));
-  if (todo.priority) meta.appendChild(el("span", { className: `priority priority--${todo.priority}`, text: 'Priority: ' + todo.priority }));
+  if (todo.priority) meta.appendChild(el("span", { className: `priority priority--${todo.priority}`, text: 'Priority: ' + capitalizeFirstLetter(todo.priority) }));
 
   content.append(desc);
   if (meta.childNodes.length) content.append(meta);
@@ -41,17 +42,19 @@ export function TodoItem(todo, { onToggleDone, onDelete, onEdit, onMove }) {
   // BOTTOM ROW (status)
   const bottom = el("div", { className: "todo__bottom" });
 
-  const toDoBtn = el("button", { className: "status-btn", text: "To Do", attrs: { type: "button" } });
+  const toDoBtn = el("button", { className: "status-btn", text: `Move to To Do`, attrs: { type: "button" } });
   toDoBtn.addEventListener("click", () => onMove(todo.id, "todo"));
 
-  const progBtn = el("button", { className: "status-btn", text: "In Progress", attrs: { type: "button" } });
+  const progBtn = el("button", { className: "status-btn", text: "Move to In Progress", attrs: { type: "button" } });
   progBtn.addEventListener("click", () => onMove(todo.id, "in_progress"));
 
-  // highlight active status
-  if (todo.status === "todo") toDoBtn.classList.add("active");
-  if (todo.status === "in_progress") progBtn.classList.add("active");
+  if (todo.status !== "todo") {
+    bottom.appendChild(toDoBtn);
+  }
 
-  bottom.append(toDoBtn, progBtn);
+  if (todo.status !== "in_progress") {
+    bottom.appendChild(progBtn);
+  }
 
   li.append(top, bottom);
   return li;
