@@ -88,6 +88,11 @@ function renderList() {
   listContainer.appendChild(TodoBoard(state.todos, handlers));
 }
 
+function todayStr() {
+  const d = new Date();
+  return d.toISOString().slice(0, 10);
+}
+
 // --------- Form submit -> save -> re-render ----------
 function handleAddTodo(payload) {
   const description = String(payload.description || "").trim();
@@ -96,7 +101,7 @@ function handleAddTodo(payload) {
   const todo = {
     id: uid(),
     description,
-    dueDate: payload.dueDate || null,
+    dueDate: payload.dueDate || todayStr(),
     priority: payload.priority || "low",
     status: "todo",      // ✅ new
     createdAt: Date.now()

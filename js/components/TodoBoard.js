@@ -1,7 +1,6 @@
 import { TodoItem } from "./TodoItem.js";
 
 function isOverdue(todo) {
-  if (!todo.dueDate) return false;
   if (todo.status === "done") return false;
 
   // Compare dates without time (safe for input type="date")

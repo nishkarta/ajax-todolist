@@ -24,7 +24,7 @@ export function TodoForm({ onSubmit }) {
   const dueWrap = el("div", { className: "todo-form__field" });
   const dueLabel = el("label", { attrs: { for: "due" }, text: "Due date" });
   const due = el("input", { attrs: { id: "due", name: "dueDate", type: "date" } });
-  const help = el("small", { className: "help", text: "Optional. Leave empty if no due date." });
+  const help = el("small", { className: "help", text: "Optional. Defaults to today." });
   dueWrap.append(dueLabel, due, help);
 
   // Priority (radio group) 
