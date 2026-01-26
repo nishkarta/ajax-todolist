@@ -3,50 +3,48 @@ import { el } from "../utils/dom.js";
 export function Tabs({ tabs }) {
   const wrapper = el("section", { className: "tabs" });
 
-  const tablist = el("div", {
-    className: "tabs__list",
-    attrs: { role: "tablist" }
-  });
+  const tablist = el("div", { className: "tabs__list" });
+
+  const header = el("div", { className: "tabs__header" });
+  const actionsWrap = el("div", { className: "tabs__actions" });
+
+  header.append(tablist, actionsWrap);
 
   const panels = el("div", { className: "tabs__panels" });
+
+  const tabButtons = [];
+  const tabPanels = [];
+
+  function activateTab(index) {
+    tabButtons.forEach((btn, i) => btn.setAttribute("aria-selected", i === index ? "true" : "false"));
+    tabPanels.forEach((p, i) => (p.hidden = i !== index));
+    actionsWrap.innerHTML = "";
+    const actions = tabs[index].actions || [];
+    actions.forEach((node) => actionsWrap.appendChild(node));
+  }
 
   tabs.forEach((tab, index) => {
     const btn = el("button", {
       className: "tabs__tab",
       text: tab.label,
-      attrs: {
-        role: "tab",
-        type: "button",
-        "aria-selected": index === 0
-      }
+      attrs: { role: "tab", type: "button", "aria-selected": "false" }
     });
 
-    const panel = el("section", {
-      className: "tabs__panel",
-      attrs: {
-        role: "tabpanel"
-      }
-    });
-
+    const panel = el("section", { className: "tabs__panel", attrs: { role: "tabpanel" } });
     panel.appendChild(tab.content);
 
-    if (index !== 0) panel.hidden = true;
+    btn.addEventListener("click", () => activateTab(index));
 
-    btn.addEventListener("click", () => {
-      // deactivate all
-      panels.querySelectorAll("[role=tabpanel]").forEach(p => p.hidden = true);
-      tablist.querySelectorAll("[role=tab]").forEach(t => t.setAttribute("aria-selected", "false"));
-
-      // activate current
-      panel.hidden = false;
-      btn.setAttribute("aria-selected", "true");
-    });
+    tabButtons.push(btn);
+    tabPanels.push(panel);
 
     tablist.appendChild(btn);
     panels.appendChild(panel);
   });
 
-  wrapper.append(tablist, panels);
+  wrapper.append(header, panels);
+
+  activateTab(0);
 
   return wrapper;
 }

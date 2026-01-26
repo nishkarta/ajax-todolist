@@ -11,6 +11,7 @@
   flex-direction: column;
   background: #111a33;
   border: 1px solid var(--color-text-light-secondary);
+  border-radius: 8px;
   padding: 12px;
   min-height: 240px;
 }

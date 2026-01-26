@@ -4,6 +4,18 @@
   margin-bottom: 12px;
 }
 
+.tabs__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.tabs__actions {
+  display: flex;
+  gap: 8px;
+}
+
 .tabs__tab {
   color: var(--color-text-light-primary);
   padding: 8px 14px;
@@ -11,13 +23,13 @@
   border: none;
   background: #0f1730;
   outline: none;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
 }
 
 .tabs__tab[aria-selected="true"] {
   /* background: #263a7a; */
-    border-bottom-color: var(--color-text-light-primary);
+  border-bottom-color: var(--color-text-light-primary);
 }
 
 .tabs__panel {

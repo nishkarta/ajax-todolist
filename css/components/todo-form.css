@@ -3,6 +3,7 @@
   background: #111a33;
   color: #e9ecf1;
   border: 1px solid var(--color-text-light-secondary);
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -33,6 +34,10 @@
   color: #e9ecf1;
   outline: none;
   color-scheme: dark;
+  font-size: 14px;
+}
+.todo-form__field input::placeholder,
+.todo-form__field textarea::placeholder {
   font-size: 14px;
 }
 
@@ -76,8 +81,8 @@
   color: var(--color-text-light-primary);
   border: 1px solid var(--color-text-light-primary);
   background: #263a7a;
-  border-radius: 4px;
-  padding: 4px 8px;
+  border-radius: 8px;
+  padding: 6px 12px;
   outline: none;
   width: 85px;
   cursor: pointer;

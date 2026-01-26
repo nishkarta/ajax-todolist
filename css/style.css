@@ -2,6 +2,9 @@
   --color-header: #0A0E1F;
   --color-background: #0F152E;
 
+  --color-danger-main: rgba(255, 0, 0, 0.6);
+  --color-danger-base: #f5610d;
+
   --color-text-light-primary: #E7E3FCDE;
   --color-text-light-secondary: #E7E3FCAD;
   --color-text-light-disabled: #E7E3FC61;
@@ -13,7 +16,7 @@
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   background: var(--color-background);
   color: var(--color-text-light-primary);
 }
@@ -22,4 +25,27 @@ main {
   max-width: calc(1440px - 36px);
   margin: 24px auto;
   padding: 16px;
+}
+
+button.danger {
+  background-color: rgba(255, 0, 0, 0.6);
+  color: var(--color-text-light-primary);
+  border: none;
+  outline: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  width: 100px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--color-text-light-primary);
+}
+
+button.danger:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
+button.danger:disabled {
+  background-color: var(--color-text-light-disabled);
+  opacity: 1;
+  cursor: not-allowed;
 }

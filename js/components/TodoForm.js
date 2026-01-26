@@ -35,7 +35,7 @@ export function TodoForm({ onSubmit }) {
 
   function prioOption(value, label, checked = false) {
     const wrap = el("label", { className: "radio" });
-    const input = el("input", { attrs: { type: "radio", name: "priority", value } });
+    const input = el("input", { attrs: { type: "radio", name: "priority", value, required: "", } });
     if (checked) input.checked = true;
 
     const span = el("span", { text: label });

@@ -7,6 +7,16 @@
   gap: 10px;
 }
 
+.todo.inProgress {
+  border-color: var(--color-danger-base)!important;
+}
+.todo.done {
+  border-color: green!important;
+}
+.todo.overdue {
+  border-color: var(--color-danger-main)!important;
+}
+
 .todo__top {
   display: flex;
   align-items: flex-start;
@@ -51,7 +61,7 @@
 .todo .actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .todo .actions input[type="checkbox"] {

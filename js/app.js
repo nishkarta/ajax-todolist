@@ -14,6 +14,22 @@ const state = {
   todos: loadTodos(), // ✅ load from localStorage at start
 };
 
+// --------- Delete All Button ----------
+const deleteAllBtn = document.createElement("button");
+deleteAllBtn.textContent = "Delete All";
+deleteAllBtn.className = "danger";
+deleteAllBtn.type = "button";
+
+deleteAllBtn.addEventListener("click", () => {
+  if (!state.todos.length) return;
+
+  if (confirm("Delete all tasks?")) {
+    state.todos = [];
+    saveTodos(state.todos);
+    renderList();
+  }
+});
+
 // --------- Handlers for TodoList ----------
 const handlers = {
   onToggleDone: (id) => {
@@ -79,13 +95,12 @@ async function initHeader() {
 initHeader();
 
 // --------- Tabs content nodes (important) ----------
-// We create a stable container for the List panel, so we can re-render into it
 const listContainer = document.createElement("div");
-
 
 function renderList() {
   listContainer.innerHTML = "";
   listContainer.appendChild(TodoBoard(state.todos, handlers));
+  deleteAllBtn.disabled = state.todos.length === 0;
 }
 
 function todayStr() {
@@ -121,7 +136,7 @@ renderList();
 appRoot.appendChild(
   Tabs({
     tabs: [
-      { label: "List", content: listContainer },
+      { label: "List", content: listContainer, actions: [deleteAllBtn] }, // ✅ only here
       { label: "Add New", content: form },
     ],
   })

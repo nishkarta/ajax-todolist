@@ -1,8 +1,21 @@
 import { el } from "../utils/dom.js";
-import { capitalizeFirstLetter } from "../utils/format.js";
+import { capitalizeFirstLetter, formatDate } from "../utils/format.js";
+
+function isOverdue(todo) {
+  if (!todo.dueDate) return false;
+  if (todo.status === "done") return false;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const due = new Date(todo.dueDate + "T00:00:00");
+  return due < today;
+}
 
 export function TodoItem(todo, { onToggleDone, onDelete, onEdit, onMove }) {
-  const li = el("li", { className: `todo${todo.status === "done" ? " done" : ""}` });
+  const overdue = isOverdue(todo);
+
+  const li = el("li", { className: `todo${todo.status === "done" ? " done" : ""}${overdue ? " overdue" : ""}${todo.status === 'in_progress' ? " inProgress" : ""}` });
 
   const descText = todo.description ?? todo.text ?? "";
 
@@ -14,7 +27,7 @@ export function TodoItem(todo, { onToggleDone, onDelete, onEdit, onMove }) {
   desc.title = descText;
 
   const meta = el("div", { className: "meta" });
-  if (todo.dueDate) meta.appendChild(el("span", { className: "due", text: `Due: ${todo.dueDate}` }));
+  if (todo.dueDate) meta.appendChild(el("span", { className: "due", text: `Due: ${formatDate(todo.dueDate)}` }));
   if (todo.priority) meta.appendChild(el("span", { className: `priority priority--${todo.priority}`, text: 'Priority: ' + capitalizeFirstLetter(todo.priority) }));
 
   content.append(desc);
