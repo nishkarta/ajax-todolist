@@ -71,10 +71,11 @@ export function TodoItem(todo, { onToggleDone, onDelete, onEdit, onMove }) {
     }
   }
 
+  li.append(top);
+
   if (bottom.childNodes.length) {
     li.append(bottom);
   }
 
-  li.append(top, bottom);
   return li;
 }
