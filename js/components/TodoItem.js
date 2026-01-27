@@ -61,12 +61,18 @@ export function TodoItem(todo, { onToggleDone, onDelete, onEdit, onMove }) {
   const progBtn = el("button", { className: "status-btn", text: "Move to In Progress", attrs: { type: "button" } });
   progBtn.addEventListener("click", () => onMove(todo.id, "in_progress"));
 
-  if (todo.status !== "todo") {
-    bottom.appendChild(toDoBtn);
+  if (!overdue) {
+    if (todo.status !== "todo") {
+      bottom.appendChild(toDoBtn);
+    }
+
+    if (todo.status !== "in_progress") {
+      bottom.appendChild(progBtn);
+    }
   }
 
-  if (todo.status !== "in_progress") {
-    bottom.appendChild(progBtn);
+  if (bottom.childNodes.length) {
+    li.append(bottom);
   }
 
   li.append(top, bottom);
